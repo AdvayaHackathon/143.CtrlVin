@@ -19,7 +19,7 @@ Welcome to the Hackathon! We're excited to have you on board and can't wait to s
 
 ## Problem Statement
 
-> **Standardizing Ayurvedic treatments for scalable and trustworthy treatments.**
+> **Traditional hospital reception systems face challenges like long queues, manual data entry errors, and language barriers**
 
 ---
 
