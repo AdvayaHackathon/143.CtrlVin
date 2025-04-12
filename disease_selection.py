@@ -1,103 +1,107 @@
 import tkinter as tk
-from tkinter import messagebox, Canvas, Frame
+from tkinter import ttk
 import subprocess
-import sys
 
-diseases = {
-    "English": [
-        ("Cardiologist (Heart Disease)", "Dr. Heart", "1", "101"),
-        ("Neurologist (Brain Disorders)", "Dr. Brain", "2", "102"),
-        ("Pulmonologist (Asthma)", "Dr. Lungs", "2", "103"),
-        ("Hematologist (Blood Cancer)", "Dr. Blood", "3", "104"),
-        ("Endocrinologist (Diabetes)", "Dr. Sugar", "3", "105"),
-        ("Dermatologist (Skin)", "Dr. Skin", "1", "106"),
-        ("Rheumatologist (Arthritis)", "Dr. Joints", "2", "107"),
-        ("Ophthalmologist (Eyes)", "Dr. Eyes", "1", "108"),
-        ("Psychiatrist (Mental Health)", "Dr. Mind", "3", "109"),
-        ("Gynecologist (Women Health)", "Dr. Women", "2", "110"),
-    ],
-    "Hindi": [
-        ("हृदय रोग विशेषज्ञ", "डॉ. दिल", "1", "101"),
-        ("न्यूरोलॉजिस्ट (मस्तिष्क विकार)", "डॉ. ब्रेन", "2", "102"),
-        ("फेफड़ों के रोग विशेषज्ञ (दमा)", "डॉ. लंग्स", "2", "103"),
-        ("हीमाटोलॉजिस्ट (ब्लड कैंसर)", "डॉ. ब्लड", "3", "104"),
-        ("एंडोक्राइनोलॉजिस्ट (मधुमेह)", "डॉ. शुगर", "3", "105"),
-        ("त्वचा रोग विशेषज्ञ", "डॉ. स्किन", "1", "106"),
-        ("रूमेटोलॉजिस्ट (गठिया)", "डॉ. जॉइंट्स", "2", "107"),
-        ("नेत्र रोग विशेषज्ञ", "डॉ. आंखें", "1", "108"),
-        ("मनोचिकित्सक", "डॉ. माइंड", "3", "109"),
-        ("स्त्री रोग विशेषज्ञ", "डॉ. वुमन", "2", "110"),
-    ],
-    "Kannada": [
-        ("ಹೃದಯರೋಗ ತಜ್ಞ", "ಡಾ. ಹಾರ್ಟ್", "1", "101"),
-        ("ನರವೈದ್ಯ (ಮೆದುಳಿನ ರೋಗ)", "ಡಾ. ಬ್ರೈನ್", "2", "102"),
-        ("ಶ್ವಾಸಕೋಶ ತಜ್ಞ (ಆಸ್ತಮಾ)", "ಡಾ. ಲಂಗ್ಸ್", "2", "103"),
-        ("ರಕ್ತದ ಕ್ಯಾನ್ಸರ್ ತಜ್ಞ", "ಡಾ. ಬ್ಲಡ್", "3", "104"),
-        ("ಅಂತರಸ್ರಾವಿ ತಜ್ಞ (ಮಧುಮೇಹ)", "ಡಾ. ಶುಗರ್", "3", "105"),
-        ("ಚರ್ಮ ತಜ್ಞ", "ಡಾ. ಸ್ಕಿನ್", "1", "106"),
-        ("ಜೋಡಣಾ ತಜ್ಞ (ಆರ್ಥರೈಟಿಸ್)", "ಡಾ. ಜಾಯಿಂಟ್ಸ್", "2", "107"),
-        ("ಕಣ್ಣು ತಜ್ಞ", "ಡಾ. ಐಸ್", "1", "108"),
-        ("ಮಾನಸಿಕ ತಜ್ಞ", "ಡಾ. ಮೈಂಡ್", "3", "109"),
-        ("ಸ್ತ್ರೀಯರ ತಜ್ಞ", "ಡಾ. ವುಮನ್", "2", "110"),
-    ]
+# Simulated patient data from previous screen
+patient_data = {
+    "name": "Ravi Kumar",
+    "phone": "9876543210",
+    "location": "Bangalore",
+    "age": "30",
+    "language": "English"
 }
 
-class DiseaseSelectionApp:
-    def __init__(self, root, language, patient_name, phone_number):
-        self.root = root
-        self.root.title("Disease Selection")
-        self.root.geometry("450x500")
-        self.root.configure(bg="#fff8e1")
+def disease_selection_screen():
+    root = tk.Tk()
+    root.title("Disease Selection")
+    root.geometry("600x400")
+    root.configure(bg="lightgreen")
 
-        self.language = language
-        self.patient_name = patient_name
-        self.phone_number = phone_number
+    selected_language = patient_data["language"]
 
-        title_text = {
-            "English": "Select Your Disease",
-            "Hindi": "अपनी बीमारी चुनें",
-            "Kannada": "ನಿಮ್ಮ ರೋಗವನ್ನು ಆಯ್ಕೆಮಾಡಿ"
+    tk.Label(root, text="Select Your Disease", font=("Arial", 16, "bold"), bg="lightgreen").pack(pady=15)
+
+    # Disease data
+    disease_data = {
+        "Headache": {
+            "English": {"Doctor": "Dr. A. Kumar", "Room": "101", "Floor": "1st"},
+            "Hindi": {"Doctor": "डॉ. ए. कुमार", "Room": "१०१", "Floor": "पहली मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಎ. ಕುಮಾರ್", "Room": "೧೦೧", "Floor": "ಮೊದಲ ಮಹಡಿ"},
+        },
+        "Fever": {
+            "English": {"Doctor": "Dr. B. Sharma", "Room": "102", "Floor": "1st"},
+            "Hindi": {"Doctor": "डॉ. बी. शर्मा", "Room": "१०२", "Floor": "पहली मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಬಿ. ಶರ್ಮಾ", "Room": "೧೦೨", "Floor": "ಮೊದಲ ಮಹಡಿ"},
+        },
+        "Toothache": {
+            "English": {"Doctor": "Dr. D. Mehta", "Room": "202", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. डी. मेहता", "Room": "२०२", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಡಿ. ಮೆಹತಾ", "Room": "೨೦೨", "Floor": "ಎರಡನೆ ಮಹಡಿ"},
+        },
+        "Chest Pain": {
+            "English": {"Doctor": "Dr. E. Nair", "Room": "301", "Floor": "3rd"},
+            "Hindi": {"Doctor": "डॉ. ई. नायर", "Room": "३०१", "Floor": "तीसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಈ. ನಾಯರ್", "Room": "೩೦೧", "Floor": "ಮೂರನೇ ಮಹಡಿ"},
         }
+    }
 
-        tk.Label(root, text=title_text[language], font=("Arial", 16, "bold"), bg="#fff8e1", fg="#bf360c").pack(pady=10)
+    selected_disease = tk.StringVar()
+    selected_disease.set("Select Disease")
 
-        # === Scrollable Frame ===
-        canvas = Canvas(root, bg="#fff8e1", borderwidth=0, highlightthickness=0, height=400)
-        frame = Frame(canvas, bg="#fff8e1")
-        scrollbar = tk.Scrollbar(root, orient="vertical", command=canvas.yview)
-        canvas.configure(yscrollcommand=scrollbar.set)
+    def on_disease_selected(*args):
+        disease = selected_disease.get()
+        if disease in disease_data:
+            info = disease_data[disease][selected_language]
+            doctor_label.config(text=f"Doctor: {info['Doctor']}")
+            floor_label.config(text=f"Floor: {info['Floor']}")
+            room_label.config(text=f"Room No: {info['Room']}")
+            next_button.config(state="normal")
+        else:
+            doctor_label.config(text="")
+            floor_label.config(text="")
+            room_label.config(text="")
+            next_button.config(state="disabled")
 
-        scrollbar.pack(side="right", fill="y")
-        canvas.pack(side="left", fill="both", expand=True)
-        canvas.create_window((0, 0), window=frame, anchor="nw")
+    disease_options = list(disease_data.keys())
+    drop = ttk.Combobox(root, textvariable=selected_disease, values=disease_options, font=("Arial", 12))
+    drop.pack(pady=10)
+    drop.bind("<<ComboboxSelected>>", on_disease_selected)
 
-        frame.bind("<Configure>", lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+    # Info display
+    doctor_label = tk.Label(root, text="", font=("Arial", 12, "bold"), bg="lightgreen")
+    doctor_label.pack(pady=5)
 
-        for disease, doctor, floor, room in diseases[language]:
-            btn = tk.Button(frame, text=disease, font=("Arial", 12), width=40, bg="#aed581", fg="black",
-                            command=lambda d=disease, doc=doctor, f=floor, r=room: self.proceed_to_payment(d, doc, f, r))
-            btn.pack(pady=6)
+    floor_label = tk.Label(root, text="", font=("Arial", 12), bg="lightgreen")
+    floor_label.pack(pady=5)
 
-    def proceed_to_payment(self, disease, doctor_name, floor, room):
-        self.root.destroy()
-        subprocess.run([
+    room_label = tk.Label(root, text="", font=("Arial", 12), bg="lightgreen")
+    room_label.pack(pady=5)
+
+    # Proceed to payment
+    def go_to_payment():
+        disease = selected_disease.get()
+        info = disease_data[disease][selected_language]
+
+        args = [
             "python", "payment_screen.py",
-            self.patient_name,
-            self.phone_number,
-            doctor_name,
-            floor,
-            room
-        ])
+            patient_data["name"],
+            patient_data["phone"],
+            patient_data["location"],
+            patient_data["age"],
+            disease,
+            info["Doctor"],
+            info["Room"],
+            info["Floor"],
+            "₹300",  # Default fee, or make it disease specific if needed
+            selected_language
+        ]
+        root.destroy()
+        subprocess.Popen(args)
+
+    next_button = tk.Button(root, text="Next", font=("Arial", 12, "bold"), bg="orange", fg="white", command=go_to_payment, state="disabled")
+    next_button.pack(pady=15)
+
+    root.mainloop()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python disease_selection.py <Language> <PatientName> <PhoneNumber>")
-        sys.exit(1)
-
-    lang = sys.argv[1]
-    patient_name = sys.argv[2]
-    phone_number = sys.argv[3]
-
-    root = tk.Tk()
-    app = DiseaseSelectionApp(root, lang, patient_name, phone_number)
-    root.mainloop()
+    disease_selection_screen()
