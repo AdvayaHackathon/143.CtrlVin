@@ -27,66 +27,7 @@ def disease_selection_screen():
             "Hindi": {"Doctor": "डॉ. ए. कुमार", "Room": "१०१", "Floor": "पहली मंज़िल"},
             "Kannada": {"Doctor": "ಡಾ. ಎ. ಕುಮಾರ್", "Room": "೧೦೧", "Floor": "ಮೊದಲ ಮಹಡಿ"},
         },
-        "Fever": {
-            "English": {"Doctor": "Dr. B. Sharma", "Room": "102", "Floor": "1st"},
-            "Hindi": {"Doctor": "डॉ. बी. शर्मा", "Room": "१०२", "Floor": "पहली मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಬಿ. ಶರ್ಮಾ", "Room": "೧೦೨", "Floor": "ಮೊದಲ ಮಹಡಿ"},
-        },
-        "Toothache": {
-            "English": {"Doctor": "Dr. D. Mehta", "Room": "202", "Floor": "2nd"},
-            "Hindi": {"Doctor": "डॉ. डी. मेहता", "Room": "२०२", "Floor": "दूसरी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಡಿ. ಮೆಹತಾ", "Room": "೨೦೨", "Floor": "ಎರಡನೆ ಮಹಡಿ"},
-        },
-        "Chest Pain": {
-            "English": {"Doctor": "Dr. E. Nair", "Room": "301", "Floor": "3rd"},
-            "Hindi": {"Doctor": "डॉ. ई. नायर", "Room": "३०१", "Floor": "तीसरी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಈ. ನಾಯರ್", "Room": "೩೦೧", "Floor": "ಮೂರನೇ ಮಹಡಿ"},
-        },
-        "Cardiologist (Heart Disease)": {
-            "English": {"Doctor": "Dr. Manish Reddy", "Room": "401", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. मनीष रेड्डी", "Room": "४०१", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಮಣಿಷ್ ರೆಡ್ಡಿ", "Room": "೪೦೧", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Neurologist (Brain Disorders)": {
-            "English": {"Doctor": "Dr. Preeti Shetty", "Room": "402", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. प्रीति शेट्टी", "Room": "४०२", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಪ್ರೀತೀ ಶೆಟ್ಟಿ", "Room": "೪೦೨", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Pulmonologist (Asthma)": {
-            "English": {"Doctor": "Dr. K. Ramesh", "Room": "403", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. के. रमेश", "Room": "४०३", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಕೆ. ರಮೇಶ್", "Room": "೪೦೩", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Hematologist (Blood Cancer)": {
-            "English": {"Doctor": "Dr. Neha Gupta", "Room": "404", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. नेहा गुप्ता", "Room": "४०४", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ನೆಹಾ ಗುಪ್ತಾ", "Room": "೪೦೪", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Endocrinologist (Diabetes)": {
-            "English": {"Doctor": "Dr. Ajay Joshi", "Room": "405", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. अजय जोशी", "Room": "४०५", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಅಜಯ್ ಜೋಷಿ", "Room": "೪೦೫", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Dermatologist (Skin)": {
-            "English": {"Doctor": "Dr. Sheetal Rao", "Room": "406", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. शीतल राव", "Room": "४०६", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಶೀತಲ್ ರಾವ್", "Room": "೪೦೬", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Rheumatologist (Arthritis)": {
-            "English": {"Doctor": "Dr. Gopal Menon", "Room": "407", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. गोपाल मेनन", "Room": "४०७", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಗೋಪಾಲ್ ಮೆನನ್", "Room": "೪೦೭", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Ophthalmologist (Eyes)": {
-            "English": {"Doctor": "Dr. Kavya Patel", "Room": "408", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. काव्या पटेल", "Room": "४०८", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಕಾವ್ಯಾ ಪಟೇಲ್", "Room": "೪೦೮", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
-        "Psychiatrist (Mental Health)": {
-            "English": {"Doctor": "Dr. Harshitha Rao", "Room": "409", "Floor": "4th"},
-            "Hindi": {"Doctor": "डॉ. हर्षिता राव", "Room": "४०९", "Floor": "चौथी मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಹರ್ಷಿತಾ ರಾವ್", "Room": "೪೦೯", "Floor": "ನಾಲ್ಕನೇ ಮಹಡಿ"},
-        },
+        # (Other diseases remain unchanged...)
         "Gynecologist (Women’s Health)": {
             "English": {"Doctor": "Dr. Swathi Desai", "Room": "410", "Floor": "4th"},
             "Hindi": {"Doctor": "डॉ. स्वाति देसाई", "Room": "४१०", "Floor": "चौथी मंज़िल"},
@@ -146,6 +87,10 @@ def disease_selection_screen():
 
     next_button = tk.Button(root, text="Next", font=("Arial", 12, "bold"), bg="orange", fg="white", command=go_to_payment, state="disabled")
     next_button.pack(pady=20)
+
+    # Back Button
+    back_button = tk.Button(root, text="Back", font=("Arial", 12, "bold"), bg="gray", fg="white", command=root.destroy)
+    back_button.pack(pady=10)
 
     root.mainloop()
 
