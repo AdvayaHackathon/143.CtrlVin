@@ -22,12 +22,51 @@ def disease_selection_screen():
     tk.Label(root, text="Select Your Disease", font=("Arial", 16, "bold"), bg="lightgreen").pack(pady=15)
 
     disease_data = {
-        "Headache": {
-            "English": {"Doctor": "Dr. A. Kumar", "Room": "101", "Floor": "1st"},
-            "Hindi": {"Doctor": "डॉ. ए. कुमार", "Room": "१०१", "Floor": "पहली मंज़िल"},
-            "Kannada": {"Doctor": "ಡಾ. ಎ. ಕುಮಾರ್", "Room": "೧೦೧", "Floor": "ಮೊದಲ ಮಹಡಿ"},
+        "Cardiologist (Heart-related disease)": {
+            "English": {"Doctor": "Dr. Ramesh Shetty", "Room": "201", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. रमेश शेट्टी", "Room": "२०१", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ರಾಮೇಶ್ ಶೆಟ್ಟಿ", "Room": "೨೦೧", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
         },
-        # (Other diseases remain unchanged...)
+        "Neurologist (Brain disorders)": {
+            "English": {"Doctor": "Dr. Anita Rao", "Room": "202", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. अनीता राव", "Room": "२०२", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಅನಿತಾ ರಾವ್", "Room": "೨೦೨", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Pulmonologist (Asthma)": {
+            "English": {"Doctor": "Dr. Prakash Nair", "Room": "203", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. प्रकाश नायर", "Room": "२०३", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಪ್ರಕಾಶ್ ನಾಯರ್", "Room": "೨೦೩", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Hematologist (Blood cancer)": {
+            "English": {"Doctor": "Dr. Leena D'Souza", "Room": "204", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. लीना डिसूजा", "Room": "२०४", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಲೀನಾ ಡಿಸೋಜಾ", "Room": "೨೦೪", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Endocrinologist (Diabetes)": {
+            "English": {"Doctor": "Dr. Mehul K", "Room": "205", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. मेहुल के", "Room": "२०५", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಮೆಹುಲ್ ಕೆ", "Room": "೨೦೫", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Dermatologist (Skin)": {
+            "English": {"Doctor": "Dr. Reena Das", "Room": "206", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. रीना दास", "Room": "२०६", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ರೀನಾ ದಾಸ್", "Room": "೨೦೬", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Rheumatologist (Arthritis)": {
+            "English": {"Doctor": "Dr. Rajiv Joshi", "Room": "207", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. राजीव जोशी", "Room": "२०७", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ರಾಜೀವ್ ಜೋಶಿ", "Room": "೨೦೭", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Ophthalmologist (Eye specialist)": {
+            "English": {"Doctor": "Dr. Kavya Hegde", "Room": "208", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. काव्या हेगड़े", "Room": "२०८", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಕಾವ್ಯಾ ಹೆಗ್ಡೆ", "Room": "೨೦೮", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
+        "Psychiatrist (Mental health)": {
+            "English": {"Doctor": "Dr. Suresh Nayak", "Room": "209", "Floor": "2nd"},
+            "Hindi": {"Doctor": "डॉ. सुरेश नायक", "Room": "२०९", "Floor": "दूसरी मंज़िल"},
+            "Kannada": {"Doctor": "ಡಾ. ಸುರೇಶ್ ನಾಯಕ್", "Room": "೨೦೯", "Floor": "ಎರಡನೇ ಮಹಡಿ"},
+        },
         "Gynecologist (Women’s Health)": {
             "English": {"Doctor": "Dr. Swathi Desai", "Room": "410", "Floor": "4th"},
             "Hindi": {"Doctor": "डॉ. स्वाति देसाई", "Room": "४१०", "Floor": "चौथी मंज़िल"},
